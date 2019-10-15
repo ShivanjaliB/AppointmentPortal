@@ -1,0 +1,148 @@
+
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="background-color: #327ebd;margin-top: -20px;margin-left:
+-20px;height:80px;width:105%;color:white !important">
+<div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+ <h2 mat-dialog-title>{{title}}  User </h2>
+</div>
+<div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+ <button style="margin-left: 75%" mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+</div>
+</div>
+
+<div class="border">
+<form class="example-form" [formGroup]="validations_form">
+<span>
+ <mat-accordion>
+   <mat-expansion-panel [expanded]="true">
+     <mat-expansion-panel-header>
+       <mat-panel-title>
+         {{title}}  User
+       </mat-panel-title>
+       <mat-panel-description>
+
+       </mat-panel-description>
+     </mat-expansion-panel-header>
+     <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+
+       <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+         <mat-form-field class="example-full-width">
+           <!-- <input matInput name="username" [(ngModel)]="user.name" placeholder="Name"
+             [ngModelOptions]="{standalone: true}"> -->
+             <mat-select placeholder="Select User" [(ngModel)]="user.person_id"
+             (ngModelChange)="personlist(user.person_id)" formControlName="person_id">
+             <mat-option *ngFor="let visitor of visitorList" 
+             [value]="visitor.p_id" >{{visitor.p_name}}</mat-option>
+     
+           </mat-select>
+
+         </mat-form-field>
+         <div class="validation-errors">
+           <ng-container *ngFor="let validation of validation_messages.person_id">
+             <div class="error-message"
+               *ngIf="validations_form.get('person_id').hasError(validation.type) && (validations_form.get('person_id').dirty || validations_form.get('person_id').touched)">
+              <mat-icon name="information-circle-outline"></mat-icon> 
+                 {{ validation.message }} 
+             </div>
+           </ng-container>
+         </div>
+       </div>
+       <mat-form-field>
+         <mat-select placeholder="Select Location" [(ngModel)]="user.locations"
+           (ngModelChange)="accesslist(user.u_role)" formControlName="locations" multiple>
+           <mat-option *ngFor="let loc of location" [value]="loc.loc_id" >{{loc.loc_name +" " +loc.description}}</mat-option>
+           
+         </mat-select>
+       </mat-form-field>
+       <!-- <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+         <mat-form-field class="example-full-width">
+           <span matPrefix>+91 &nbsp;</span>
+           <input type="tel" matInput name="mobNum" 
+           placeholder="Mobile Number" [(ngModel)]="user.contact"
+             [ngModelOptions]="{standalone: true}">
+           <mat-datepicker #picker3></mat-datepicker>
+         </mat-form-field>
+       </div> -->
+     </div>
+
+     <!-- <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+
+       <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+         <mat-form-field class="example-full-width">
+           <input matInput name="address" [(ngModel)]="user.address" placeholder="Address"
+             [ngModelOptions]="{standalone: true}">
+
+         </mat-form-field>
+       </div>
+       <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+         <mat-form-field class="example-full-width">
+           <input matInput name="email" [(ngModel)]="user.email" placeholder="Email Id"
+             [ngModelOptions]="{standalone: true}">
+
+         </mat-form-field>
+       </div>
+     </div> -->
+     <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+
+       <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <mat-form-field class="example-full-width">
+               <input matInput name="username" [(ngModel)]="user.username" placeholder="Username"
+                 [ngModelOptions]="{standalone: true}" formControlName="username">
+
+             </mat-form-field>
+             <div class="validation-errors">
+               <ng-container *ngFor="let validation of validation_messages.username">
+                 <div class="error-message"
+                   *ngIf="validations_form.get('username').hasError(validation.type) && (validations_form.get('username').dirty || validations_form.get('username').touched)">
+                 <mat-icon name="information-circle-outline"></mat-icon> 
+                     {{ validation.message }} 
+                 </div>
+               </ng-container>
+             </div>
+         </div>
+       <!-- </div> -->
+       <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+               <mat-form-field class="example-full-width" >
+                 <input matInput name="password" [(ngModel)]="user.password" placeholder="Password"
+                   [ngModelOptions]="{standalone: true}" formControlName="password">
+
+               </mat-form-field>
+               <div class="validation-errors">
+                 <ng-container *ngFor="let validation of validation_messages.password">
+                   <div class="error-message"
+                     *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+                   <mat-icon name="information-circle-outline"></mat-icon> 
+                       {{ validation.message }} 
+                   </div>
+                 </ng-container>
+               </div>
+         </div>
+     </div>
+     <mat-form-field>
+       <mat-select placeholder="Select User Role" [(ngModel)]="user.u_role"
+         (ngModelChange)="accesslist(user.u_role)" formControlName="u_role">
+         <mat-option *ngFor="let userd of userRole" [value]="userd.u_role_id" >{{userd.u_role}}</mat-option>
+         
+       </mat-select>
+     </mat-form-field>
+     <div class="validation-errors">
+       <ng-container *ngFor="let validation of validation_messages.u_role">
+         <div class="error-message"
+           *ngIf="validations_form.get('u_role').hasError(validation.type) && (validations_form.get('u_role').dirty || validations_form.get('u_role').touched)">
+          <mat-icon name="information-circle-outline"></mat-icon> 
+             {{ validation.message }} 
+         </div>
+       </ng-container>
+     </div>
+   </mat-expansion-panel>
+ </mat-accordion>
+</span>
+
+</form>
+</div>
+
+<mat-dialog-actions align="end">
+<button mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+<button mat-raised-button color="primary" mat-button class="submit-button" 
+[disabled]="!validations_form.valid" (click)="openConfirmationDialog(user)">Save</button>
+</mat-dialog-actions>

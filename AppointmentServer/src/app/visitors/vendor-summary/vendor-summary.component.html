@@ -1,0 +1,124 @@
+<div fxLayout="column" class="components-container-gt-xs" [ngClass.xs]="'components-container-xs'" fxLayoutGap="20px">
+  <div fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+    fxLayoutGap="10px">
+    <div fxFlex.sm="100" class="cdk-card-holder" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="100">
+      <mat-toolbar class="cards-header">
+        <h1 class="mat-headline center-align">Person Summary</h1>
+      </mat-toolbar>
+      <div class="cards-container">
+        <div fxLayoutAlign="space-around stretch" fxLayoutWrap>
+          <mat-tab-group fxFlexFill>
+            <mat-tab label="Basic Detail" >
+              <mat-card>
+                <mat-card-content>
+                  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-title>Name</mat-card-title>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-subtitle>{{personDetails[0].p_name}}</mat-card-subtitle>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-title>Email</mat-card-title>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-subtitle>{{personDetails[0].email}}</mat-card-subtitle>
+                    </div>
+                  </div>
+                  <br>
+                  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-title>Mobile Number</mat-card-title>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-subtitle>{{personDetails[0].p_mobile_no}}</mat-card-subtitle>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-title>City</mat-card-title>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-subtitle>{{personDetails[0].city}}</mat-card-subtitle>
+                    </div>
+                  </div>
+                  <br>
+                  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-title>State</mat-card-title>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-subtitle>{{personDetails[0].state}}</mat-card-subtitle>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-title>Pincode</mat-card-title>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-subtitle>{{personDetails[0].pincode}}</mat-card-subtitle>
+                    </div>
+                  </div>
+                  <br>
+                  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-title>Company Name</mat-card-title>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-subtitle>{{personDetails[0].compony_name}}</mat-card-subtitle>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-title>Host Name</mat-card-title>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                      <mat-card-subtitle></mat-card-subtitle>
+                    </div>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </mat-tab>
+
+            <mat-tab label="Vehicle Detail">
+                <mat-card>
+                  <mat-card-content *ngIf="vehicleId != undefined">
+                    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+                      <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                        <mat-card-title>Vehicle Number</mat-card-title>
+                      </div>
+                      <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                        <mat-card-subtitle>{{vehicleDetails[0].vehicle_no}}</mat-card-subtitle>
+                      </div>
+                      <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                        <mat-card-title>Name</mat-card-title>
+                      </div>
+                      <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                        <mat-card-subtitle>{{vehicleDetails[0].driver_name}}</mat-card-subtitle>
+                      </div>
+                    </div>
+                    <br>
+                    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+                      <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                        <mat-card-title>Driving License Number</mat-card-title>
+                      </div>
+                      <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                        <mat-card-subtitle>{{vehicleDetails[0].licene_no}}</mat-card-subtitle>
+                      </div>
+                      <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                        <mat-card-title>Name</mat-card-title>
+                      </div>
+                      <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                        <mat-card-subtitle>{{vehicleDetails[0].vehicle_no}}</mat-card-subtitle>
+                      </div>
+                    </div>
+                  </mat-card-content>
+                  <mat-card-content *ngIf="vehicleId == undefined">
+                    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+                        <div fxFlex.xs="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.sm="100">
+                            <mat-card-title>Vehicle Not Found</mat-card-title>
+                          </div>
+                      </div>
+                  </mat-card-content>
+                </mat-card>
+              </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

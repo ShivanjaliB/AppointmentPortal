@@ -1,0 +1,127 @@
+<div fxLayout="column" class="components-container-gt-xs" [ngClass.xs]="'components-container-xs'" fxLayoutGap="20px"
+  style="width: 195%">
+
+  <div fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+    fxLayoutGap="10px">
+
+    <div fxFlex.sm="100" class="cdk-card-holder" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="100">
+
+      <mat-toolbar class="cards-header">
+        <h1 class="mat-headline center-align">Appointment Summary for {{id}}</h1>
+
+      </mat-toolbar>
+      <mat-card>
+        <div class="summary">
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="padding: 20px">
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Person Name:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-subtitle>{{personDetails.p_name}}</mat-card-subtitle>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Mobile Number:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-title>{{personDetails.p_mobile_no}}</mat-card-title>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="padding: 20px">
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Email:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-subtitle>{{personDetails.email}}</mat-card-subtitle>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Company Name:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-title>{{personDetails.compony_name}}</mat-card-title>
+            </div>
+          </div>
+
+
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="padding: 20px">
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Appointment Time</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-subtitle>{{appoint.appoint_time}}</mat-card-subtitle>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Appointment Date:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-title>{{appoint.date}}</mat-card-title>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="padding: 20px">
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Host Name</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-subtitle>-</mat-card-subtitle>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <!-- <mat-card-title>Mobile Number:</mat-card-title> -->
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <!-- <mat-card-title>{{personDetails.p_mobile_no}}</mat-card-title> -->
+            </div>
+          </div>
+
+
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="padding: 20px">
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Check In time:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-subtitle>{{appoint.check_in}}</mat-card-subtitle>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Check Out Time:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-title>{{appoint.check_out}}</mat-card-title>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="padding: 20px">
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Status:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-subtitle>{{appoint.status}}</mat-card-subtitle>
+             <br>
+              <button *ngIf="appoint.statusp==3" mat-raised-button  class="primary"  (click)="openBatchComponent(appoint)">
+                View Batch
+              </button>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Purpose:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-title>{{appoint.purpose}}</mat-card-title>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="padding: 20px">
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>QR Code:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="value">
+              </ngx-qrcode>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+  </div>
+</div>

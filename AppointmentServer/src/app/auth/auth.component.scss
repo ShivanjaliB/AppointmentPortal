@@ -1,0 +1,109 @@
+@import '~ngx-toastr/toastr';
+// @mixin auth($theme) {
+//     $primary: map-get($theme, primary);
+//     $accent: map-get($theme, accent);
+//     $warn: map-get($theme, warn);
+
+    
+//     .sidenav{
+//         background:  rgb(22, 21, 21);  
+//         overflow: hidden;
+//         position: relative;
+//         width: 250px;
+//     }
+//     .drawer{
+//         background:  rgb(22, 21, 21);    
+//         overflow: hidden;
+//         position: relative;
+//         width: 80px;
+//     }
+//     [no-over-flow] {
+//         overflow: hidden;
+//     }
+//     .router-outlet{
+//         position: relative;padding: 0px 5px;
+//     }
+//     .spacer {
+//         width: 100%;
+//     }
+
+//     .logo{
+//         font-size: 26px;font-family: Roboto;color:white;margin-top: 8px;
+//     }
+//     .mat-toolbar.mat-primary {
+//         background:   rgb(22, 21, 21);
+//         color: white;
+//     }
+//     .mat-toolbar-row, .mat-toolbar-single-row {
+//         display: flex;
+//         box-sizing: border-box;
+//         padding: 0 16px;
+//         width: 100%;
+//         flex-direction: row;
+//         align-items: center;
+//         background-color: rgb(22, 21, 21);
+//         white-space: nowrap;
+//         color:wheat
+//     }
+//     cdk-sidemenu-item .secondaryMenu {
+//         background: rgb(107, 107, 104);
+//         transition: max-height 0.4s cubic-bezier(0.35, 0, 0.25, 1);
+//         padding-top: 0px;
+//     }
+//     .components-container-gt-xs {
+//         padding: 20px;
+//         background-color: whitesmoke;
+//     }
+
+// }
+
+
+
+@mixin auth($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+
+    
+    .sidenav{
+        background: mat-color($primary,400);    
+        overflow: hidden;
+        position: relative;
+        width: 250px;
+    }
+    .drawer{
+        background: mat-color($primary,400);    
+        overflow: hidden;
+        position: relative;
+        width: 80px;
+    }
+    [no-over-flow] {
+        overflow: hidden;
+    }
+    .router-outlet{
+        position: relative;padding: 0px 5px;
+    }
+    .spacer {
+        width: 100%;
+    }
+
+    .logo{
+        font-size: 26px;font-family: Roboto;color:white;margin-top: 8px;
+    }
+}
+
+ .toast-top-right{
+    position: fixed;
+    left:40% !important;
+    top:40% !important;
+    width:30%;
+    height:20%;
+}
+
+.toast-container .toast{
+    width:100% !important;
+    height:150% !important; 
+    display: flex;
+    align-items: center;
+} 
+

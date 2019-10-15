@@ -1,0 +1,109 @@
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="background-color: #327ebd;margin-top: -20px;margin-left:
+   -20px;height:80px;width:105%;color:white !important">
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+    <h2 mat-dialog-title>{{title}} Assign </h2>
+  </div>
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+    <button style="margin-left: 75%" mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+  </div>
+</div>
+
+<div class="border">
+  <form [formGroup]="validations_form">
+    <span>
+      <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{title}} Assign List
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-form-field class="example-full-width">
+
+                <mat-select placeholder="Select" [(ngModel)]="assign.bin_code"
+                  (ngModelChange)="personlist(assign.bin_code)" formControlName="bincode">
+                  <mat-option *ngFor="let bin of Binlist" [value]="bin.bin_code">
+                    {{bin.bin_code +"          "+"--"+bin.bin_details}}</mat-option>
+
+                </mat-select>
+
+              </mat-form-field>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.bincode">
+                  <div class="error-message"
+                    *ngIf="validations_form.get('bincode').hasError(validation.type) && (validations_form.get('bincode').dirty || validations_form.get('bincode').touched)">
+                    <mat-icon name="information-circle-outline"></mat-icon>
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-form-field class="example-full-width">
+                <mat-select placeholder="Select" [(ngModel)]="assign.mat_code" (ngModelChange)="accesslist(user.u_role)"
+                  class="form-control" formControlName="materialname">
+                  <mat-option *ngFor="let material of MaterialList" [value]="material.mat_code">
+                    {{material.mat_code +"          "+"--"+material.mat_name}}</mat-option>
+
+                </mat-select>
+              </mat-form-field>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.materialname">
+                  <div class="error-message"
+                    *ngIf="validations_form.get('materialname').hasError(validation.type) && (validations_form.get('materialname').dirty || validations_form.get('materialname').touched)">
+                    <mat-icon name="information-circle-outline"></mat-icon>
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+
+          </div>
+
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-form-field class="example-full-width">
+                <input matInput name="BinQty" [(ngModel)]="assign.binqty" placeholder="BinQty"
+                  [ngModelOptions]="{standalone: true}" disabled>
+
+              </mat-form-field>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-form-field class="example-full-width">
+                <input matInput type="number" name="capacity" [(ngModel)]="assign.capacity" placeholder="Capacity"
+                  [ngModelOptions]="{standalone: true}" class="form-control" formControlName="capacity">
+
+              </mat-form-field>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.capacity">
+                  <div class="error-message"
+                    *ngIf="validations_form.get('capacity').hasError(validation.type) && (validations_form.get('capacity').dirty || validations_form.get('capacity').touched)">
+                    <mat-icon name="information-circle-outline"></mat-icon>
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </span>
+  </form>
+
+
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" mat-button class="submit-button" [disabled]="!validations_form.valid"
+   (click)="openConfirmationDialog(assign)">Save</button>
+</mat-dialog-actions>

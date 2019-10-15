@@ -1,0 +1,78 @@
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="background-color: #327ebd;margin-top: -20px;margin-left:
+   -20px;height:80px;width:105%;color:white !important">
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+    <h2 mat-dialog-title>{{title}} Location</h2>
+  </div>
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+    <button style="margin-left: 75%" mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+  </div>
+</div>
+
+<div class="border">
+  <form class="example-form" [formGroup]="validations_form">
+
+    <span>
+      <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{title}} Location
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-form-field class="example-full-width">
+                <input matInput name="loc_name" [(ngModel)]="location.loc_name" placeholder="Location Name"
+                  [ngModelOptions]="{standalone: true}" formControlName="loc_name" (ngModelChange)="location.loc_name= $event.toUpperCase()">
+
+              </mat-form-field>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.loc_name">
+                  <div class="error-message"
+                    *ngIf="validations_form.get('loc_name').hasError(validation.type) && (validations_form.get('loc_name').dirty || validations_form.get('loc_name').touched)">
+                   <mat-icon name="information-circle-outline"></mat-icon> 
+                      {{ validation.message }} 
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-form-field class="example-full-width">
+                <input matInput name="description" [(ngModel)]="location.description" placeholder="Description"
+                  [ngModelOptions]="{standalone: true}" formControlName="description" (ngModelChange)="location.description= $event.toUpperCase()">
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.description">
+                  <div class="error-message"
+                    *ngIf="validations_form.get('description').hasError(validation.type) && (validations_form.get('description').dirty || validations_form.get('description').touched)">
+                   <mat-icon name="information-circle-outline"></mat-icon> 
+                      {{ validation.message }} 
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+
+
+          </div>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </span>
+
+  </form>
+</div>
+
+
+
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" mat-button class="submit-button"
+   [disabled]="!validations_form.valid" (click)="openConfirmationDialog(location)">Save</button>
+</mat-dialog-actions>

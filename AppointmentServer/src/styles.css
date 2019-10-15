@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~@fortawesome/fontawesome-free/css/all.css";
+/* .mat-header-cell{
+
+.mat-header-cell{
+    color:black
+} */
+ 
+
+.pointer {
+    cursor: pointer;
+}
+
+ 

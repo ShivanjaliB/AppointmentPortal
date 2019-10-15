@@ -1,0 +1,159 @@
+<div fxLayout="column" class="components-container-gt-xs" [ngClass.xs]="'components-container-xs'" fxLayoutGap="20px">
+  <div fxFlex class="table-component-holder mat-elevation-z4">
+    <mat-toolbar class="table-header">
+      <h1 class="mat-headline center-align">{{cat}} Expected Today</h1>
+    </mat-toolbar>
+    <div class="table-container">
+      <div class="example-header" style="padding: 0 20px;">
+        <!-- <mat-form-field floatPlaceholder="never" style="color: black; width: 100%;">
+          <input matInput #filter placeholder="Filter users">
+        </mat-form-field> -->
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="padding: 0 20px;">
+        <div fxFlex.xs="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.sm="100">
+          <mat-form-field>
+            <mat-select [(ngModel)]="selecteddata" (ngModelChange)="ddl(selecteddata)"
+              placeholder="Select Appointment Type">
+              <mat-option [value]="2" selected>Logistic</mat-option>
+              <mat-option [value]="1">Visitor</mat-option>
+            </mat-select>
+          </mat-form-field>
+         
+          <mat-form-field style="margin-left:25%">
+            <input matInput [matDatepicker]="picker3" placeholder="Search By Date" [(ngModel)]="date.value"
+              (ngModelChange)="OnDateChange(date.value)">
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field style="margin-left:25%">
+            <input matInput placeholder="Search Visitor By Mobile Number" [(ngModel)]="appoint.p_mobile_no">
+            <mat-icon matSuffix (click)="searchPerson()">search</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxFlex.xs="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.sm="100" *ngIf="isappointenable==true">
+        <div *ngIf="isenable1==false || isappointenable==true || visitenable==true">
+         
+          <div  style="margin-left: 82%" >
+            <button  mat-raised-button color="primary" (click)="openVisitorComponent1()">Create Visitor Appointment
+           </button>
+                   <!--    <button style="margin-left: 4%" mat-raised-button color="primary" (click)="openVehicleComponent()">Create Vehicle Appointment
+            </button> -->
+          </div>
+        </div>
+      </div>
+
+
+      <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8" style="margin-top: 20px;">
+
+        <ng-container matColumnDef="userId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+          <mat-cell *matCellDef="let row" (click)="toggle(row)"> {{row.appont_id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="user">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> <span *ngIf="appointCat == 1">Visitor Name</span>
+            <span *ngIf="appointCat == 2">Driver Name</span> </mat-header-cell>
+          
+          <mat-cell *matCellDef="let row" (click)="toggle(row)"> {{row.persondetail.p_name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="userMobileNumber">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Mobile No</mat-header-cell>
+          <mat-cell *matCellDef="let row" (click)="toggle(row)">{{row.persondetail.p_mobile_no}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="userEmail">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+          <mat-cell *matCellDef="let row" (click)="toggle(row)"> {{row.persondetail.email}} </mat-cell>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="userCity">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
+          <mat-cell *matCellDef="let row" (click)="toggle(row)"> {{row.persondetail.city}} </mat-cell>
+        </ng-container> -->
+
+
+        <ng-container matColumnDef="userIntime">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Visit Time</mat-header-cell>
+          <mat-cell *matCellDef="let row" (click)="toggle(row)"> {{row.appoint_time}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="userEstimatedtime">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Checked In Time</mat-header-cell>
+            <mat-cell *matCellDef="let row" (click)="toggle(row)"> {{row.check_in}} </mat-cell>
+          </ng-container>
+
+        <ng-container matColumnDef="userVehicle">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Vehicle </mat-header-cell>
+          <mat-cell *matCellDef="let row" (click)="toggle(row)">{{row.vehicledetal.vehicle_name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="userVehicleNo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Vehicle  Number </mat-header-cell>
+            <mat-cell *matCellDef="let row" (click)="toggle(row)">{{row.vehicledetal.vehicle_no}}</mat-cell>
+          </ng-container>
+
+
+        <ng-container matColumnDef="userHostname">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Host Name </mat-header-cell>
+          <mat-cell *matCellDef="let row" (click)="toggle(row)">-</mat-cell>
+        </ng-container>
+
+
+        <!-- <ng-container matColumnDef="userPurpose">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
+          <mat-cell *matCellDef="let row" (click)="toggle(row)">{{row.appoint_cat}}</mat-cell>
+                  </ng-container> -->
+
+        <ng-container matColumnDef="userStatus">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Action </mat-header-cell>
+          <mat-cell *matCellDef="let row" (click)="UpdateAppointment(row)">
+            <button *ngIf="row.status == 0" [matTooltip]="checkIn.value" mat-raised-button color="primary"
+              class="custom-icon">
+              <mat-icon matSuffix style="transform: rotate(540deg);color:green;font-size :30px;padding-left: 0px;">exit_to_app</mat-icon>
+            </button>
+            <button *ngIf="row.status == 5 ||row.status == 4 || row.status == 3 || row.status == 2 || row.status == 1  "
+              [matTooltip]="checkOut.value" mat-raised-button color="primary" class="custom-icon">
+              <mat-icon matSuffix style="font-size: 30px;color:red;padding-right: 13px;">exit_to_app</mat-icon>
+            </button>
+            <button *ngIf="row.status == 6" [matTooltip]="checkIn.value" mat-raised-button color="primary"
+              class="custom-icon">
+              Checked Out
+            </button>
+
+            <!-- <button *ngIf="statusarr[row.status] == 'flight_takeoff'" [matTooltip]="checkIn.value" mat-raised-button color="primary" class="custom-icon">
+                  <mat-icon matSuffix style="color:green;font-size :30px;">exit_to_app</mat-icon>
+                </button>
+               <button *ngIf="statusarr[row.status] == 'flight_land'" [matTooltip]="checkOut.value" mat-raised-button color="primary" class="custom-icon"> 
+                 <mat-icon matSuffix style="transform: rotate(540deg);font-size: 30px;color:red">exit_to_app</mat-icon>
+                </button> -->
+
+          </mat-cell>
+        </ng-container>
+
+
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns;let index"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns; "
+          [class.example-selected-row]="selection.isSelected(row.appont_id)">
+        </mat-row>
+
+      </mat-table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20 ,50 ,100]" showFirstLastButtons></mat-paginator>
+      <!-- <div class="example-no-results"
+        [style.display]="dataSource?.renderedData.length == 0 ? '' : 'none'">
+        No users found matching filter.
+      </div> -->
+
+      <!-- <mat-paginator #paginator [length]="1" [pageIndex]="0" [pageSize]="25" [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator> -->
+    </div>
+  </div>
+</div>

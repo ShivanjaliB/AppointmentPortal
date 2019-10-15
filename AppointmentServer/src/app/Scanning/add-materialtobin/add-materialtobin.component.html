@@ -1,0 +1,77 @@
+<!-- <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="background-color: rgb(199, 196, 196);margin-top: -20px;margin-left:
+ -20px;height:80px;width:105%"> -->
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="background-color: #327ebd;margin-top: -20px;margin-left:
+-20px;height:80px;width:105%;color:white !important"  >
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+    <h2 mat-dialog-title>Assing Material To Bin</h2>
+  </div>
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+    <button style="margin-left: 75%" mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+  </div>
+</div>
+
+<div class="border">
+  <form class="example-form">
+
+    <span>
+      <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Assign Material
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <!-- <mat-form-field>
+                <mat-select matInput  [(ngModel)]="selecteddata" name="selectbin" placeholder="Select Bin" [ngModelOptions]="{standalone: true}" ngDefaultControl>
+                  <mat-option [value]="2" selected>Logistic</mat-option>
+                  <mat-option [value]="1">Visitor</mat-option>
+                </mat-select>
+              </mat-form-field> -->
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-form-field class="example-full-width">
+                <input matInput name="material_name" [(ngModel)]="material.mat_name" placeholder="Material Name"
+                  [ngModelOptions]="{standalone: true}" ngDefaultControl>
+                <!-- <input matInput name="material_name" [(ngModel)]="material.mat_name" placeholder="Material Name"
+                  [ngModelOptions]="{standalone: true}"> -->
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
+
+
+              <mat-form-field>
+              <mat-select matInput name="material_name" [(ngModel)]="material.mat_name" placeholder="Material Name">
+                  <mat-option [value]="2" selected>Logistic</mat-option>
+                  <mat-option [value]="1">Visitor</mat-option>
+              </mat-select>
+            </mat-form-field>
+              <!-- <mat-form-field>
+                <mat-label>Favorite food</mat-label>
+                <mat-select>
+                    <mat-option [value]="2" selected>Logistic</mat-option>
+                    <mat-option [value]="1">Visitor</mat-option>
+                </mat-select>
+              </mat-form-field> -->
+            </div>
+          </div>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </span>
+
+  </form>
+</div>
+
+
+
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" mat-button class="submit-button" (click)="add(material)">Save</button>
+</mat-dialog-actions>

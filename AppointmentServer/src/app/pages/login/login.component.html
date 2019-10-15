@@ -1,0 +1,43 @@
+<div fxLayout="column" fxFlexFill fxLayoutAlign="center center" style="background-image:url('../../../assets/login11.jpg');
+height: 100%;
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover; ">
+    <div fxLayout="column">
+
+        <div class=" mat-elevation-z4">
+            <mat-card>
+                <mat-card-title>User login
+                    <a class="redirect" [routerLink]="['/sigup']">Register an account</a>
+                </mat-card-title>
+                <!-- <mat-divider></mat-divider> -->
+                <mat-card-content>
+                    <form class="example-form">
+                    <!-- <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="userForm" (ngSubmit)="login()"> -->
+                        <mat-form-field class="full-width">
+                            <input type="text" id="username" name="username" [(ngModel)]="user.username"
+                                placeholder="Username" [ngModelOptions]="{standalone: true}" matInput>
+                        </mat-form-field>
+                        <!-- <div *ngIf="formErrors.email" class="help is-danger">
+                            {{ formErrors.email }}
+                        </div> -->
+                        <mat-form-field class="full-width">
+                            <input type="password" id="password" name="password" [(ngModel)]="user.password"
+                                placeholder="Password" [ngModelOptions]="{standalone: true}" matInput>
+                        </mat-form-field>
+                        <!-- <div *ngIf="formErrors.password" class="help is-danger">
+                            {{ formErrors.password }}
+                        </div> -->
+                        <button mat-raised-button id="login" color="primary" type="submit"
+                        (click)="dologin(user)">log in</button>
+                    </form>
+                </mat-card-content>
+                <!-- <mat-dialog-actions align="end">
+                        <button mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+                        <button mat-raised-button color="primary" mat-button class="submit-button" (click)="dologin(user)">Save</button>
+                      </mat-dialog-actions> -->
+            </mat-card>
+
+        </div>
+    </div>
+</div>

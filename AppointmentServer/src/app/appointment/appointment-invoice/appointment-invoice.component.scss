@@ -1,0 +1,53 @@
+// .table-header {
+//     background-color: gray;
+//     color: white;
+ 
+//     width: 100%
+// }
+
+.table-header {
+	background-color: #327ebd;
+	color: white;
+	width: 100%
+}
+// .table-container {
+// 	// padding: 5px 15px 15px 15px;
+.custom-icon:hover{
+	color:blue
+}
+.custom-icon{
+//background-color: lightgray;
+background: none;
+font-weight: 900;
+color:black;
+text-align: center;
+float: right;
+box-shadow: none;
+}
+	
+// }
+.table-component-holder {
+	// border:1px solid gray;
+	background-color: white;
+}
+
+.mat-header-cell{
+	color:black;
+	font-size: 16px;
+	font-weight: 900
+}
+.mat-cell{
+	color:black;
+	font-size: 15px;
+}
+// .mat-paginator{
+// 	color:black;
+// 	font-size: 15px;
+// 	font-weight: 900
+// }
+.full{
+  width: 50%;
+  margin-left: 40%
+}
+// .primary{background-color: #5c6bc0;
+// 	color:#fff}

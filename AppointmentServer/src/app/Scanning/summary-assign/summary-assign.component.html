@@ -1,0 +1,64 @@
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="background-color: #327ebd;margin-top: -20px;margin-left:
+   -20px;height:80px;width:105%;color:white !important">
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+    <h2 mat-dialog-title> Assign Summary</h2>
+  </div>
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+    <button style="margin-left: 75%" mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+  </div>
+</div>
+
+<div class="border">
+  <form [formGroup]="validations_form">
+
+    <span>
+      <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Assign Summary
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="padding: 20px">
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Bincode:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-subtitle>{{assign.bin_code}}</mat-card-subtitle>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Material Code:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-title>{{assign.mat_code}}</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <mat-card-title>Material Capacity:</mat-card-title>
+            </div>
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" class="sub">
+              <mat-card-title>{{assign.capacity}}</mat-card-title>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="padding: 20px">
+
+            <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+              <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                <mat-card-title>QR Code:</mat-card-title>
+              </div>
+              <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+                <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="value">
+                </ngx-qrcode>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </span>
+
+  </form>
+</div>

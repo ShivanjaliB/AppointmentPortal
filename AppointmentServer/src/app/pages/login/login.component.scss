@@ -1,0 +1,59 @@
+$gray-lighter: #eceeef !default;
+$image_path: "/assets/images/" !default;
+
+$prefix: 'sigin';
+
+.#{$prefix} {
+
+  &-conainer {
+    min-height: 100%;
+    background-size: cover;
+    padding: 100px;
+  }
+
+  &-main {
+    position: relative;
+    margin: 0 auto;
+    width: 500px;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+// .help {
+
+// }
+
+// .is-danger {
+
+// }
+
+.redirect {
+  font-size: 14px;
+  margin-left: 10px;
+  color: #00AAAA;
+}
+
+.mat-card{
+  height:400px;
+  width:400px
+}
+.mat-card-content{
+  margin-top: 100px !important
+}
+
+::ng-deep .mat-form-field-label {
+
+  color:blue !important;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+
+  color:blue !important;
+}
+.mat-card-title{
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+  background-color: aliceblue
+}

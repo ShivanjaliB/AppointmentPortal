@@ -1,0 +1,91 @@
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="background-color: #327ebd;margin-top: -20px;margin-left:
+   -20px;height:80px;width:105%;color:white !important">
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+    <h2 mat-dialog-title> {{title}} User Role</h2>
+  </div>
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+    <button style="margin-left: 75%" mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+  </div>
+</div>
+
+<div class="border">
+  <form class="example-form" [formGroup]="validations_form">
+
+  <span>
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{title}} User Role
+          </mat-panel-title>
+          <mat-panel-description>
+
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+
+          <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+            <mat-form-field class="example-full-width">
+              <input matInput name="u_role" [(ngModel)]="urole.u_role" placeholder="User Role"
+                [ngModelOptions]="{standalone: true}" formControlName="u_role" (ngModelChange)="urole.u_role= $event.toUpperCase()">
+             </mat-form-field>
+             <div class="validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.u_role">
+                <div class="error-message"
+                  *ngIf="validations_form.get('u_role').hasError(validation.type) && (validations_form.get('u_role').dirty || validations_form.get('u_role').touched)">
+                 <mat-icon name="information-circle-outline"></mat-icon> 
+                    {{ validation.message }} 
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+            <mat-form-field class="example-full-width">
+              <input matInput name="u_role_code" [(ngModel)]="urole.u_role_code" placeholder="User Role Code"
+                [ngModelOptions]="{standalone: true}" formControlName="u_role_code" (ngModelChange)="urole.u_role_code= $event.toUpperCase()">
+              <mat-datepicker #picker3></mat-datepicker>
+            </mat-form-field>
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.u_role_code">
+                <div class="error-message"
+                  *ngIf="validations_form.get('u_role_code').hasError(validation.type) && (validations_form.get('u_role_code').dirty || validations_form.get('u_role_code').touched)">
+                 <mat-icon name="information-circle-outline"></mat-icon> 
+                    {{ validation.message }} 
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        
+        <mat-form-field>
+      <mat-select placeholder="Select" [(ngModel)]="urole.u_role_accesslist" (ngModelChange)="accesslist(urole.u_role_accesslist)" multiple formControlName="u_role_accesslist">
+        <mat-option *ngFor="let topping of years" [value]="topping.viewValue" >{{topping.view}}</mat-option>
+        <!-- <mat-option value="option">Visitor Managment</mat-option> -->
+        <!-- <mat-option value="option">Both</mat-option> -->
+      </mat-select>
+    </mat-form-field>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.u_role_accesslist">
+        <div class="error-message"
+          *ngIf="validations_form.get('u_role_accesslist').hasError(validation.type) && (validations_form.get('u_role_accesslist').dirty || validations_form.get('u_role_accesslist').touched)">
+         <mat-icon name="information-circle-outline"></mat-icon> 
+            {{ validation.message }} 
+        </div>
+      </ng-container>
+    </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </span>
+
+  </form>
+</div>
+
+
+
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" mat-button class="submit-button" 
+  [disabled]="!validations_form.valid" (click)="openConfirmationDialog(urole)">Save</button>
+</mat-dialog-actions>

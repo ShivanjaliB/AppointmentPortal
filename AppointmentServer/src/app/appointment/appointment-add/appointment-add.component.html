@@ -1,0 +1,220 @@
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="background-color:#327ebd;margin-top: -20px;margin-left:
+   -20px;height:80px;width:105%;color:white !important">
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+    <h2 mat-dialog-title>Add New Visitors</h2>
+  </div>
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+      <button class="overclose" mat-button mat-dialog-close><i class="material-icons">
+        clear
+        </i></button>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="margin-top: 10px"  *ngIf="shownext==false">
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+    <mat-form-field class="full">
+        <input matInput placeholder="Search Visitor By Mobile Number"  [(ngModel)]="appoint.p_mobile_no">
+        <mat-icon matSuffix (click)="searchPerson()">search</mat-icon>
+      </mat-form-field>
+</div> 
+</div>
+<!-- qrcode -->
+<h1>angularx-qrcode demo implementation</h1>
+
+<qrcode [qrdata]="qrdata" [size]="256" [level]="'M'"></qrcode>
+
+<br>
+<label>
+  Type to change: <input [(ngModel)]="qrdata" placeholder="name">
+</label>
+<!-- end qrcode -->
+
+
+<div class="border" *ngIf="shownext==true">
+<form class="example-form">
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+      
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="First Name" name="fname" disabled [(ngModel)]="appoint.p_name">
+         
+        </mat-form-field>
+     
+    </div>
+    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+    
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Last Name"  name="lname" [(ngModel)]="appoint.p_name" disabled>
+          
+        </mat-form-field>
+     
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" >
+
+     
+        <mat-form-field class="example-full-width">
+          <span matPrefix>+91 &nbsp;</span>
+          <input type="tel" matInput placeholder="Mobile Number" name="mob" disabled [(ngModel)]="appoint.p_mobile_no">
+        
+        </mat-form-field>
+    
+    </div>
+
+    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+ 
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email"  [(ngModel)]="appoint.email"  disabled name="email">
+        </mat-form-field>
+     
+    </div>
+
+
+  </div>
+
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+ 
+    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+      	<mat-form-field>
+            <input matInput [matDatepicker]="picker"  placeholder="Choose a date" name="date" [(ngModel)]="appoint.date" 
+            disabled>
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker disabled="false"></mat-datepicker>
+					</mat-form-field>
+    </div>
+    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+      
+     
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Pin Code" [(ngModel)]="appoint.pincode" disabled name="pin">
+      </mat-form-field>
+ 
+  </div>
+  </div>
+
+
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+        <mat-form-field class="example-full-width">
+          <input type="tel" matInput placeholder="City" disabled [(ngModel)]="appoint.city"  name="city">
+        </mat-form-field>
+    </div>
+    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="state" disabled [(ngModel)]="appoint.state"  name="state">
+        </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+        <mat-form-field class="example-full-width">
+          <input type="tel" matInput placeholder="Company Name" name="com" [(ngModel)]="appoint.compony_name">
+        </mat-form-field>
+    </div>
+    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Address" disabled  name="address" [(ngModel)]="appoint.p_address" ></textarea>
+        </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+      <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+          <mat-form-field class="example-full-width">
+            <input type="tel" matInput placeholder="Company Name" disabled name="com" [(ngModel)]="appoint.compony_name">
+          </mat-form-field>
+      </div>
+      <!-- <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+  
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Address"  name="address" [(ngModel)]="appoint.p_address" ></textarea>
+          </mat-form-field>
+      </div> -->
+    </div>
+    <!-- <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+        <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+  
+            <mat-form-field class="example-full-width">
+              <input  matInput placeholder="Transport Name" atp-time-picker value="20:55" theme="dark" 
+              name="in_time{{i}}" [(ngModel)]="entity.in_time" 
+               arrowStyle="{'background': 'red', 'color': 'white'}"
+                (ngModelChange)="set_time($event)" ngIf="entity.status!='A'" /> 
+                &nbsp; &nbsp; <i (click)="setNow(i,1)"  
+                class="fa fa-clock-o clickable" aria-hidden="true"></i> >
+                <input matInput placeholder="Select Time" disabled name="veh" atp-time-picker value="19:00"
+                arrowStyle="{'background': 'red', 'color': 'white'}"
+                (ngModelChange)="set_time($event)" [(ngModel)]="appoint.visitor_time"> 
+            </mat-form-field>
+      
+        </div>
+      </div> -->
+</form>
+  <mat-divider></mat-divider>
+
+
+
+
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="margin-top: 10px" *ngIf="isenable==false" >
+    <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+        <form class="example-form">
+    <mat-form-field class="full">
+        <input matInput placeholder="Search By Vehicle Number" name="veh" [(ngModel)]="vehicle.vehicle_no">
+        <mat-icon matSuffix (click)="searchVehicle()">search</mat-icon>
+       
+      </mat-form-field>
+        </form>
+  </div> 
+  <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+  </div>
+  </div>
+
+
+  <div *ngIf="isenable==true">
+      <button mat-raised-button class="add" disabled (click)="displayvehicle()" id="add_vehicle">Add Vehicle</button>
+    </div>
+
+
+  <div *ngIf="add_vehicle == true">
+      <form class="example-form">
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+      <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+       
+          <mat-form-field class="example-full-width">
+            <input type="tel" matInput placeholder="Vehicle Name" disabled name="vehname" [(ngModel)]="vehicle.vehicle_no">
+          </mat-form-field>
+      
+      </div>
+      <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" name="vehno">
+       
+
+      </div>
+    </div>
+   
+      </form>
+  </div>
+
+  
+</div>
+
+
+<!-- <td><input type="time" atp-time-picker value="20:55" theme="dark" 
+  name="in_time{{i}}" [(ngModel)]="entity.in_time" 
+   arrowStyle="{'background': 'red', 'color': 'white'}"
+    (ngModelChange)="set_time($event)" ngIf="entity.status!='A'" /> 
+    &nbsp; &nbsp; <i ngIf="entity.status!='A'"
+   (click)="setNow(i,1)" class="fa fa-clock-o clickable" aria-hidden="true"></i></td> -->
+
+<mat-dialog-actions align="end">
+  <button class="overclose" mat-button mat-dialog-close>Cancel</button>
+  <button class="add" mat-button >Save</button>
+  <!-- <button class="add1"  (click)="submit()">Save</button> -->
+</mat-dialog-actions>
+
+

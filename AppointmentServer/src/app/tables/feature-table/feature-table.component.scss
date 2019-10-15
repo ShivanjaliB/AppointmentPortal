@@ -1,0 +1,29 @@
+// .table-header {
+//     background-color: gray;
+//     color: white;
+//     padding: 20px;
+// }
+.table-container {
+	padding: 5px 15px 15px 15px;
+	// border: 2px solid gray
+	
+}
+.table-component-holder {
+	// border:1px solid gray;
+	background-color: white;
+}
+
+.mat-header-cell{
+	color:black;
+	font-size: 18px;
+	font-weight: 900
+}
+.mat-cell{
+	color:black;
+	font-size: 15px;
+}
+.mat-paginator{
+	color:black;
+	font-size: 15px;
+	font-weight: 900
+}

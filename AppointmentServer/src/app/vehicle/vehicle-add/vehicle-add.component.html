@@ -1,0 +1,246 @@
+
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="background-color:#327ebd;margin-top: -20px;margin-left:
+-20px;height:80px;width:105%;color: white !important">
+ <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+   <!-- <h2 mat-dialog-title>Add New Vehicle<span *ngIf="data == 1">Appointment</span></h2>
+    -->
+    <h2 mat-dialog-title>{{title}} Vehicle</h2>
+   </div>
+ <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+   <button style="margin-left: 75%" mat-raised-button color="secondary" mat-button mat-dialog-close><i
+       class="material-icons">
+       clear
+     </i></button>
+ </div>
+</div>
+
+<!-- <mat-dialog-actions>
+ <button mat-button mat-dialog-close>No</button>
+ <button mat-button [mat-dialog-close]="true">Yes</button>
+ </mat-dialog-actions> -->
+
+<div class="border">
+ <form class="example-form">
+   <div class="ssss">
+     <!-- VEHICLE -->
+     <mat-accordion>
+       <mat-expansion-panel [expanded]="true">
+         <mat-expansion-panel-header>
+           <mat-panel-title>
+             Vehicle Details
+           </mat-panel-title>
+           <mat-panel-description>
+
+           </mat-panel-description>
+         </mat-expansion-panel-header>
+         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <mat-form-field class="example-full-width">
+               <input type="tel" name="vehicle_name" matInput placeholder="Vehicle Name"
+                 [(ngModel)]="vehicle.vehicle_name" (ngModelChange)="vehicle.vehicle_name= $event.toUpperCase()">
+             </mat-form-field>
+           </div>
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <mat-form-field class="example-full-width">
+               <input matInput name="vehicle_no" placeholder="Vehicle Number" 
+               [(ngModel)]="vehicle.vehicle_no" (ngModelChange)="vehicle.vehicle_no = $event.toUpperCase()">
+             </mat-form-field>
+           </div>
+         </div>
+         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <mat-form-field class="example-full-width">
+               <input type="tel" name="driver_name" matInput placeholder="Driver Name"
+                 [(ngModel)]="vehicle.driver_name" (ngModelChange)="vehicle.driver_name= $event.toUpperCase()">
+             </mat-form-field>
+           </div>
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <mat-form-field class="example-full-width">
+               <input matInput name="licene_no" placeholder="License Number" [(ngModel)]="vehicle.licene_no"
+               (ngModelChange)="vehicle.licene_no= $event.toUpperCase()">
+             </mat-form-field>
+           </div>
+         </div>
+         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <mat-form-field class="example-full-width">
+               <input type="tel" name="tranp_name" matInput placeholder="Transport Name"
+                 [(ngModel)]="vehicle.tranp_name" (ngModelChange)="vehicle.tranp_name= $event.toUpperCase()">
+             </mat-form-field>
+           </div>
+         </div>
+       </mat-expansion-panel>
+     </mat-accordion>
+
+     <!-- PERSON -->
+     <mat-accordion *ngIf="isappoint==true">
+       <mat-expansion-panel [expanded]="true">
+         <mat-expansion-panel-header>
+           <mat-panel-title>
+             Driver Details
+           </mat-panel-title>
+           <mat-panel-description>
+
+           </mat-panel-description>
+         </mat-expansion-panel-header>
+         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+
+             <mat-form-field class="example-full-width">
+               <input matInput name="fName" placeholder="First Name" [(ngModel)]="visitor.fName"
+                 [formControl]="fnameFormControls" [ngModelOptions]="{standalone: true}">
+               <mat-error *ngIf="fnameFormControls.hasError('pattern')">
+                 Please enter a valid Name
+               </mat-error>
+               <mat-error *ngIf="fnameFormControls.hasError('required')">
+                 First Name is <strong>required</strong>
+               </mat-error>
+             </mat-form-field>
+
+           </div>
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+
+             <mat-form-field class="example-full-width">
+               <input matInput name="lName" placeholder="Last Name" [(ngModel)]="visitor.lName"
+                 [formControl]="lnameFormControls" [ngModelOptions]="{standalone: true}">
+               <mat-error *ngIf="lnameFormControls.hasError('pattern')">
+                 Please enter a valid Name
+               </mat-error>
+               <mat-error *ngIf="lnameFormControls.hasError('required')">
+                 Last Name is <strong>required</strong>
+               </mat-error>
+             </mat-form-field>
+
+           </div>
+         </div>
+         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+
+             <mat-form-field class="example-full-width">
+               <span matPrefix>+91 &nbsp;</span>
+               <input type="tel" matInput name="mobNum" placeholder="Mobile Number" [(ngModel)]="visitor.p_mobile_no"
+                 [formControl]="p_mobile_noFormControls" [ngModelOptions]="{standalone: true}">
+               <mat-error *ngIf="p_mobile_noFormControls.hasError('pattern')">
+                 Please enter a valid MobNo
+               </mat-error>
+               <mat-error *ngIf="p_mobile_noFormControls .hasError('required')">
+                 PersonType is <strong>required</strong>
+               </mat-error>
+             </mat-form-field>
+
+           </div>
+
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+
+
+             <mat-form-field class="example-full-width">
+               <input matInput placeholder="Email" [formControl]="emailFormControls" [(ngModel)]="visitor.email"
+                 [ngModelOptions]="{standalone: true}">
+               <mat-error *ngIf="emailFormControls.hasError('pattern')">
+                 Please enter a valid email address
+               </mat-error>
+               <mat-error *ngIf="emailFormControls.hasError('required')">
+                 Email is <strong>required</strong>
+               </mat-error>
+             </mat-form-field>
+           </div>
+         </div>
+
+         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <mat-form-field class="example-full-width">
+               <input type="tel" name="city" [(ngModel)]="visitor.city" matInput placeholder="City">
+             </mat-form-field>
+           </div>
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <mat-form-field class="example-full-width">
+               <input name="state" [(ngModel)]="visitor.state" matInput placeholder="state">
+             </mat-form-field>
+           </div>
+         </div>
+
+         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <mat-form-field class="example-full-width">
+               <input type="tel" name="companyName" [(ngModel)]="visitor.compony_name" matInput
+                 placeholder="Company Name">
+             </mat-form-field>
+           </div>
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <!-- <mat-form-field class="example-full-width">
+               <input matInput name="pinCode" placeholder="Pin Code" [(ngModel)]="visitor.pincode">
+             </mat-form-field> -->
+             <mat-form-field>
+               <mat-select placeholder="Select Location" [(ngModel)]="visitor.loc_id"
+                 (ngModelChange)="accesslist(visitor.locations)" [ngModelOptions]="{standalone: true}">
+                 <mat-option *ngFor="let loc of location" [value]="loc.loc_id" >
+                   {{loc.loc_name +"     "+"  "+loc.description}}</mat-option>
+                 
+               </mat-select>
+             </mat-form-field>
+           </div>
+         </div>
+         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <mat-form-field class="example-full-width">
+               <textarea matInput name="address" [(ngModel)]="visitor.p_address" placeholder="Address"></textarea>
+             </mat-form-field>
+           </div>
+         </div>
+       </mat-expansion-panel>
+     </mat-accordion>
+   </div>
+   <mat-divider></mat-divider>
+<span *ngIf="case ==2" style="padding: 10px">
+     <mat-accordion>
+       <mat-expansion-panel [expanded]="true">
+         <mat-expansion-panel-header>
+           <mat-panel-title>
+             Appointment Details
+           </mat-panel-title>
+           <mat-panel-description>
+
+           </mat-panel-description>
+         </mat-expansion-panel-header>
+         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <mat-form-field class="example-full-width">
+               <input matInput [matDatepicker]="picker3" placeholder="Date" [(ngModel)]="date.value"
+                 (ngModelChange)="OnDateChange(date.value)" [ngModelOptions]="{standalone: true}">
+               <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+               <mat-datepicker #picker3></mat-datepicker>
+             </mat-form-field>
+           </div>
+           <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50">
+             <mat-form-field class="example-full-width">
+               <input matInput name="time" [(ngModel)]="visitor.appoint_time" [formControl]="timeFormControls"
+                 placeholder="time" [ngModelOptions]="{standalone: true}">
+               <mat-error *ngIf="timeFormControls.hasError('required')">
+                 Time is <strong>required</strong>
+               </mat-error>
+               <!-- <div class="12hr-example">
+                 <input placeholder="12hr format (default settings)" aria-label="12hr format" [ngxTimepicker]="default" readonly>
+                 <ngx-material-timepicker #default></ngx-material-timepicker>
+            </div> -->
+             </mat-form-field>
+           </div>
+         </div>
+       </mat-expansion-panel>
+     </mat-accordion>
+   </span>
+</form>
+</div>
+
+
+
+
+<mat-dialog-actions align="end">
+   <!-- <button (click)="openConfirmationDialog()" type="button" class="btn btn-primary">Open dialog</button> -->
+ <button mat-raised-button color="secondary" mat-button mat-dialog-close>Cancel</button>
+ <button mat-raised-button color="primary" mat-button class="submit-button" id="save" (click)="openConfirmationDialog(vehicle,visitor)">Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,45 @@
+
+
+.table-header {
+	background-color: #327ebd;
+	color: white;
+	width: 100%
+}
+
+.table-component-holder {
+	background-color: white;
+}
+
+.mat-header-cell{
+	color:black;
+	font-size: 16px;
+	font-weight: 900
+}
+.mat-cell{
+	color:black;
+	font-size: 15px;
+}
+.custom-icon:hover{
+	color:blue
+}
+cdk-dashcard .mat-icon {
+	font-size: 59px !important;
+  }
+
+.custom-icon{
+//background-color: lightgray;
+background: none;
+font-weight: 900;
+color:black;
+text-align: center;
+float: right;
+box-shadow: none;
+}
+
+.full{
+  width: 50%;
+  margin-left: 40%
+}
+.components-container-gt-xs{
+    width: 100%
+}
